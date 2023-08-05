@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-07-28T11:10:53.081-0300</date>
+  <logger>PEDRO HENRIQUE VELOSO FERNANDES</logger>
+  <level>FINE</level>
+  <message>File 122110181-PEDRO HENRIQUE VELOSO FERNANDES.zip was received. It was sent by PEDRO HENRIQUE VELOSO FERNANDES from IP 150.165.42.175 at 28-07-2023 11*10*53</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-07-29T16:45:35.639-0300</date>
+  <logger>PEDRO HENRIQUE VELOSO FERNANDES</logger>
+  <level>FINE</level>
+  <message>File 122110181-PEDRO HENRIQUE VELOSO FERNANDES.zip was received. It was sent by PEDRO HENRIQUE VELOSO FERNANDES from IP 192.168.25.154 at 29-07-2023 16*45*35</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-07-30T12:27:16.244-0300</date>
+  <logger>PEDRO HENRIQUE VELOSO FERNANDES</logger>
+  <level>FINE</level>
+  <message>File 122110181-PEDRO HENRIQUE VELOSO FERNANDES.zip was received. It was sent by PEDRO HENRIQUE VELOSO FERNANDES from IP 192.168.25.154 at 30-07-2023 12*27*16</message>
+</record>
