@@ -1,6 +1,8 @@
-package vetor;
+package solucao.vetor;
 
 import java.util.Comparator;
+
+import vetor.Aluno;
 
 /**
  * Implementação de um vetor de objetos simples para exercitar os conceitos de
@@ -9,7 +11,7 @@ import java.util.Comparator;
  * @author Adalberto
  *
  */
-public class Vetor<T extends Comparable<T>>{
+public class Vetor<T extends Comparable<T>> {
 
 	// O array interno onde os objetos manipulados são guardados
 	private T[] arrayInterno;
@@ -28,6 +30,7 @@ public class Vetor<T extends Comparable<T>>{
 		super();
 		this.tamanho = tamanho;
 		this.indice = -1;
+		this.arrayInterno = (T[]) new Comparable[tamanho];
 	}
 
 	public void setComparadorMaximo(Comparator<T> comparadorMaximo) {
@@ -40,17 +43,20 @@ public class Vetor<T extends Comparable<T>>{
 
 	// Insere um objeto no vetor
 	public void inserir(T o) {
-		arrayInterno[++indice] = o;
+		this.arrayInterno[++indice] = o;
 	}
 
 	// Remove um objeto do vetor
 	public T remover(T o) {
-		T res = null;
+		// a procura se darah usando o equals o tipo T (precisa ser
+		// sobrescrito). a remocao
+		// nao deixa buracos no array
+		T result = null;
 		boolean achou = false;
 		int i = 0;
-		while(i <= indice && !achou){
-			if(arrayInterno[i].equals(o)){
-				res = arrayInterno[i];
+		while (i <= indice && !achou) {
+			if (arrayInterno[i].equals(o)) {
+				result = arrayInterno[i];
 				arrayInterno[i] = arrayInterno[indice];
 				arrayInterno[indice] = null;
 				indice--;
@@ -58,35 +64,34 @@ public class Vetor<T extends Comparable<T>>{
 			}
 			i++;
 		}
-
-		return res;
+		return result;
 	}
 
 	// Procura um elemento no vetor
 	public T procurar(T o) {
-		T res = null;
+		T result = null;
 		boolean achou = false;
 		int i = 0;
-		while(i <= indice && !achou){
-			if(arrayInterno[i].equals(o)){
-				res = arrayInterno[i];
+		while (i <= indice && !achou) {
+			if (arrayInterno[i].equals(o)) {
+				result = arrayInterno[i];
 				achou = true;
 			}
 			i++;
 		}
-		return res;
+		return result;
 	}
 
 	// Diz se o vetor está vazio
 	public boolean isVazio() {
-		return indice == -1;
+		return this.indice == -1;
 	}
 
 	// Diz se o vetor está cheio
 	public boolean isCheio() {
-		return indice == tamanho -1;
+		return this.indice == this.tamanho - 1;
 	}
-	
+
 	public T maximo() {
 		T result = null;
 		if (!isVazio()) {
@@ -113,22 +118,22 @@ public class Vetor<T extends Comparable<T>>{
 		return result;
 	}
 
+}
 
-	class ComparadorMaximo implements Comparator<Aluno> {
+class ComparadorMaximo implements Comparator<Aluno> {
 
-		@Override
-		public int compare(Aluno o1, Aluno o2) {
-			return (int) (o1.getMedia() - o2.getMedia());
-		}
-	
+	@Override
+	public int compare(Aluno o1, Aluno o2) {
+		return (int) (o1.getMedia() - o2.getMedia());
 	}
-	
-	class ComparadorMinimo implements Comparator<Aluno> {
-	
-		@Override
-		public int compare(Aluno o1, Aluno o2) {
-			return (int) (o2.getMedia() - o1.getMedia());
-		}
-	
+
+}
+
+class ComparadorMinimo implements Comparator<Aluno> {
+
+	@Override
+	public int compare(Aluno o1, Aluno o2) {
+		return (int) (o2.getMedia() - o1.getMedia());
 	}
+
 }

@@ -2,22 +2,14 @@ package produto;
 
 import java.util.ArrayList;
 
-/**
- * Classe que representa um repositório de produtos usando ArrayList como
- * estrutura sobrejacente. Alguns métodos (atualizar, remover e procurar) ou
- * executam com sucesso ou retornam um erro. Para o caso desde exercício, o erro
- * será representado por uma RuntimeException que não precisa ser declarada na
- * clausula "throws" do mos metodos.
- *
- * @author Adalberto
- */
-public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto> {
+import produto.Produto;
 
-	/**
+public class RepositorioProdutosArray<T extends Produto> implements RepositorioProdutos<T> {
+    /**
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
 	 * por enquanto com o uso de generics em ArrayList.
 	 */
-	private ArrayList produtos;
+	private T[] produtos;
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
@@ -25,9 +17,9 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	 */
 	private int index = -1;
 
-	public RepositorioProdutoArrayList(int size) {
+	public RepositorioProdutosArray(int size) {
 		super();
-		this.produtos = new ArrayList();
+		this.produtos = (T[]) new Object[size];
 	}
 
 	/**
@@ -40,7 +32,19 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		return this.produtos.indexOf(new Produto(codigo, null, 0, null));
+		int i = 0;
+		int resp = -1;
+		boolean achou = false;
+
+		while ((i <= index) && !achou) {
+			if (produtos[i].getCodigo() == codigo) {
+				resp = i;
+				achou = true;
+			}
+			i = i + 1;
+		}
+		return resp;
+
 	}
 
 	/**
@@ -62,8 +66,8 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
-	public void inserir(Produto produto) {
-		produtos.add(produto);
+	public void inserir(T produto) {
+		produtos[++ index] = produto;
 	}
 
 	/**
@@ -71,10 +75,14 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
 	 */
-	public void atualizar(Produto produto) {
+	public void atualizar(T produto) {
 		if(procurarIndice(produto.getCodigo()) == -1) throw new RuntimeException(); 
-		produtos.remove(produto);
-		produtos.add(produto);
+		int i = procurarIndice(produto.getCodigo());
+		if (i != -1) {
+			produtos[i] = produto;
+		} else {
+			throw new RuntimeException("Produto nao encontrado");
+		}
 	}
 
 	/**
@@ -85,8 +93,14 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		if(existe(codigo) == false) throw new RuntimeException();
-		produtos.remove(new Produto(codigo, null, 0, null));
+		int i = this.procurarIndice(codigo);
+		if (i != -1) {
+			produtos[i] = produtos[index];
+			produtos[index] = null;
+			index--;
+		} else {
+			throw new RuntimeException("Produto nao encontrado");
+		}
 	}
 
 	/**
@@ -96,9 +110,9 @@ public class RepositorioProdutoArrayList implements RepositorioProdutos<Produto>
 	 * @param codigo
 	 * @return
 	 */
-	public Produto procurar(int codigo) {
+	public T procurar(int codigo) {
 		int index = procurarIndice(codigo);
 		if(index == -1) throw new RuntimeException();
-		return (Produto) produtos.get(index);
+		return produtos[index];
 	}
 }
