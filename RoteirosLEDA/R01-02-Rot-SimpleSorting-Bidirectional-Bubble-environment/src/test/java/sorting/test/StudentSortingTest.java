@@ -51,8 +51,8 @@ public class StudentSortingTest {
 		this.implementation = new InsertionSort<Integer>();
 		this.implementation = new SelectionSort<Integer>();
 		this.implementation = new BidirectionalBubbleSort<Integer>();
-		//this.implementation = new RecursiveBubbleSort<Integer>();
-		//this.implementation = new RecursiveSelectionSort<Integer>();
+		this.implementation = new RecursiveBubbleSort<Integer>();
+		this.implementation = new RecursiveSelectionSort<Integer>();
 		
 	}
 
@@ -126,9 +126,9 @@ public class StudentSortingTest {
 
 		if(array.length > 0){
 			copy1 = Arrays.copyOf(array, array.length);
+			Arrays.sort(copy1,leftIndex,rightIndex+1);
 		}
 		implementation.sort(array,leftIndex,rightIndex);
-		Arrays.sort(copy1,leftIndex,rightIndex+1);
 		Assert.assertArrayEquals(copy1, array);
 	}
 	
