@@ -1,10 +1,7 @@
 package sorting.test;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Stream;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

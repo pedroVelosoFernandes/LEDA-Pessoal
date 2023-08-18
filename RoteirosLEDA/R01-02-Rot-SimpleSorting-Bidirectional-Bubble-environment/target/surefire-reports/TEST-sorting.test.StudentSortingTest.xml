@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="sorting.test.StudentSortingTest" time="0.011" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="sorting.test.StudentSortingTest" time="0.013" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.8+7-Debian-1"/>
@@ -59,15 +59,15 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.stdout.encoding" value="UTF-8"/>
   </properties>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort6" time="0.006"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort6" time="0.004"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort7" time="0"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort8" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort9" time="0"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort9" time="0.002"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort01" time="0"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort02" time="0"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort03" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort04" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort05" time="0"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort04" time="0.001"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort05" time="0.001"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort10" time="0"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort11" time="0.001"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort12" time="0"/>
