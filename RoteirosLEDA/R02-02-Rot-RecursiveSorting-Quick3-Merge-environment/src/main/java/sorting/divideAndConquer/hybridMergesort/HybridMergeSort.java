@@ -1,6 +1,7 @@
 package sorting.divideAndConquer.hybridMergesort;
 
 import sorting.AbstractSorting;
+import util.Util;
 
 /**
  * A classe HybridMergeSort representa a implementação de uma variação do
@@ -26,11 +27,82 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	 */
 	public static final int SIZE_LIMIT = 4;
 
-	protected static int MERGESORT_APPLICATIONS = 0;
-	protected static int INSERTIONSORT_APPLICATIONS = 0;
+	public static int MERGESORT_APPLICATIONS = 0;
+	public static int INSERTIONSORT_APPLICATIONS = 0;
 
-	public void sort(T[] array, int leftIndex, int rightIndex) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+			
+
+	public void sort(T[]array,int leftIndex,int rightIndex){
+		INSERTIONSORT_APPLICATIONS = 0;
+		MERGESORT_APPLICATIONS= 0;
+		sortHibrido(array, leftIndex,rightIndex);
+	}
+
+	public void sortHibrido(T[] array, int leftIndex, int rightIndex) {
+		if(leftIndex< rightIndex && leftIndex >= 0 && rightIndex < array.length){
+			if(rightIndex-leftIndex+1 > SIZE_LIMIT){
+				mergeSort(array, leftIndex, rightIndex);
+				MERGESORT_APPLICATIONS++;
+			}
+			else{
+				insertionSort(array, leftIndex, rightIndex);
+				INSERTIONSORT_APPLICATIONS++;
+			}
+		}
+	}
+	public void mergeSort(T[] array, int leftIndex, int rightIndex) {
+		
+		if(leftIndex < rightIndex && leftIndex >= 0 && rightIndex < array.length){
+			int middle = (leftIndex + rightIndex)/2;
+			sortHibrido(array,leftIndex,middle);
+			sortHibrido(array,middle + 1,rightIndex);
+
+			merge(array,leftIndex,middle,rightIndex);
+		}
+	}
+	private void insertionSort(T[] array, int leftIndex,int rightIndex){
+		if(leftIndex < rightIndex){
+			for(int i = leftIndex; i<= rightIndex;i++){
+				int j = i;
+				while(j> leftIndex && array[j].compareTo(array[j-1])<0){
+					Util.swap(array, j, j-1);
+					j--;
+				}
+			}
+		}
+	}
+
+	private void merge(T[] array, int leftIndex,int middle,int rightIndex){
+		T[] helper = (T[]) new Comparable[array.length];
+		for(int i = leftIndex; i <= rightIndex; i++){
+			helper[i] = array[i];
+		}
+
+		int i = leftIndex;
+		int j = middle +1;
+		int k = leftIndex;
+
+		while(i <= middle && j<= rightIndex){
+			if(helper[i].compareTo(helper[j])<0){
+				array[k] = helper[i];
+				i++;
+			}
+			else{
+				array[k] = helper[j];
+				j++;
+			}
+			k++;
+		}
+
+		while(i <= middle){
+			array[k] = helper[i];
+			i++;
+			k++;
+		}
+		while(j <= middle){
+			array[k] = helper[i];
+			i++;
+			k++;
+		}
 	}
 }
