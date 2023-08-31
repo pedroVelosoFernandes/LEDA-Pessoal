@@ -46,32 +46,33 @@ public class QuickSelect<T extends Comparable<T>> {
 	public T quickSelect(T[] array, int k) {
 		T res = null;
 		if(array != null && k > 0 && k <= array.length && array.length > 0){
-			int index = quick(array,0,array.length-1,k);
+			int index = buscaEstatistica(array,0,array.length-1,k);
 			res = array[index];
 		}
 		return res;
 
 	}
 
-	private int quick(T[] array, int leftIndex, int rightIndex,int k){
+	private int buscaEstatistica(T[] array, int leftIndex, int rightIndex,int k){
+
 		int indexPivot = particionar(array, leftIndex, rightIndex);
 		
-
-		if(indexPivot + 1 < k){
-			indexPivot = quick(array, indexPivot + 1, rightIndex,k);
-		}
 		if(indexPivot + 1 > k){
-			indexPivot = quick(array,leftIndex, indexPivot-1,k);
+			indexPivot = buscaEstatistica(array, leftIndex, indexPivot-1, k);
 		}
-		return indexPivot;
-
-	}
-	private int particionar(T[] array,int leftIndex,int rightIndex){
+		else if (indexPivot + 1 < k){
+			indexPivot = buscaEstatistica(array, indexPivot+1, rightIndex, k);
+		}
 		
+		return indexPivot;
+	}
+
+
+	private int particionar(T[] array,int leftIndex,int rightIndex){
 		T pivot = array[leftIndex];
 		int i = leftIndex;
-		for(int j = i +1;j< rightIndex;j++){
-			if(array[j].compareTo(pivot)<=0){
+		for(int j = leftIndex+1; j<= rightIndex;j++){
+			if(array[j].compareTo(pivot) <= 0){
 				Util.swap(array, ++i, j);
 			}
 		}

@@ -41,7 +41,7 @@ public class StudentSortingTest {
 		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
 		// null
 		this.implementation = new CountingSort();
-		this.implementation = new ExtendedCountingSort();
+		//this.implementation = new ExtendedCountingSort();
 		
 	}
 
@@ -109,4 +109,99 @@ public class StudentSortingTest {
 	 * SEGUIR A ESTRUTURA DOS MÉTODOS DE TESTE ACIMA DESCRITOS, ORDENANDO APENAS
 	 * UMA PARTE DO ARRAY.
 	 */
+	public void genericTestPedaco(Integer[] array, int leftIndex, int rightIndex) {
+		Integer[] copy1 = {};
+
+		if (array.length > 0) {
+			copy1 = Arrays.copyOf(array, array.length);
+			Arrays.sort(copy1, leftIndex, rightIndex + 1);
+		}
+		implementation.sort(array, leftIndex, rightIndex);
+		Assert.assertArrayEquals(copy1, array);
+	}
+
+	@Test
+	public void testSort6() {
+		// par
+		Integer[] vetor = new Integer[] { 2, 6, 4, 3 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 3);
+	}
+
+	@Test
+	public void testSort7() {
+		// impar
+		Integer[] vetor = new Integer[] { 4, 3, 1 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 2);
+	}
+
+	@Test
+	public void testSort8() {
+		// caso base
+		Integer[] vetor = new Integer[] { 1 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 0);
+	}
+
+	@Test
+	public void testSort9() {
+		// lista ordenada
+		Integer[] vetor = new Integer[] { 4, 5, 6, 7 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 3);
+	}
+
+	@Test
+	public void testSort10() {
+		// troca dos limites da lista
+		Integer[] vetor = new Integer[] { 4, 2, 3, 0 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 3);
+	}
+
+	@Test
+	public void testSort11() {
+		// vazia
+		Integer[] vetor = new Integer[] {};
+		genericTest(vetor);
+		genericTestPedaco(vetor, 0, 0);
+	}
+
+	@Test
+	public void testSort12() {
+		// parte
+		Integer[] vetor = new Integer[] { 7, 6, 5, 4, 3, 2, 1 };
+		// esperado ind[2](elemento 5) ate ind[4](elemento3) estarem ordenados
+		genericTestPedaco(vetor, 2, 4);
+	}
+
+	@Test
+	public void testSort13() {
+		// index esquerdo e direito 0
+		Integer[] vetor = new Integer[] { 0, 1 };
+		genericTestPedaco(vetor, 0, 0);
+	}
+
+	@Test
+	public void testSort14() {
+		// index esquerdo e direito -1
+		Integer[] vetor = new Integer[] { 0, 1 };
+		genericTestPedaco(vetor, 0, -1);
+	}
+
+	@Test
+	public void testSort15() {
+		// index esquerdo > direito
+		Integer[] vetor = new Integer[] { 0, 1 };
+		genericTestPedaco(vetor, 2, 1);
+	}
+
+	@Test
+	public void testSort16() {
+		// negativos
+		Integer[] vetor = new Integer[] { -2, -1 };
+		genericTest(vetor);
+		genericTestPedaco(vetor, 2, 1);
+	}
 }
