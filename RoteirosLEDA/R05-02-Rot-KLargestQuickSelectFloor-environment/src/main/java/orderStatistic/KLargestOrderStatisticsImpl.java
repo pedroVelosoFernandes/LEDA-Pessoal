@@ -34,11 +34,10 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 		T[] resposta = (T[]) new Comparable[k];
 		if(array != null && k > 0 && k <= array.length && array.length > 0){
 
-			int count = k-1;
+			int count = k;
 			
-			for(int i = array.length; i> k-array.length ;i--){
-				resposta[count--] = orderStatistics(array, i);
-				k++;
+			for(int i = array.length; i> array.length - k ;i--){
+				resposta[--count] = orderStatistics(array, i);
 			}
 		}
 		else{
@@ -61,9 +60,10 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 	 */
 	public T orderStatistics(T[] array, int k){
 		T res = null;
-		int index = buscaEstatistica(array,0,array.length-1,k);
-		res = array[index];
-	
+		if(array != null && k > 0 && k <= array.length && array.length > 0){
+			int index = buscaEstatistica(array,0,array.length-1,k);
+			res = array[index];
+		}
 		return res;
 	}
 	

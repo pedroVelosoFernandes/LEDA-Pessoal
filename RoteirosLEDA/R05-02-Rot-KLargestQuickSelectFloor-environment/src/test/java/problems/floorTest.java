@@ -16,6 +16,21 @@ public class floorTest {
         this.arrayVazio = new Integer[] {};
     }
 
+    // Casos limites
+    @Test
+    public void testLimites01() {
+        assertEquals(this.implementacao.floor(this.array, -4), null);
+    }
+    
+    @Test
+    public void testLimites02() {
+        assertEquals(this.implementacao.floor(this.array, -2), Integer.valueOf("-3"));
+    }
+    
+    @Test
+    public void testLimites03() {
+        assertEquals(this.implementacao.floor(this.array, 41), Integer.valueOf("40"));
+    }
     // Casos Válidos
     @Test
     public void testProblems00() {
@@ -59,12 +74,6 @@ public class floorTest {
     @Test
     public void testProblems06() {
         assertEquals(this.implementacao.floor(this.arrayVazio, 2), null);
-    }
-
-    // Quando não tem um elemento menor que o passado no parâmetro, no array
-    @Test
-    public void testProblems07() {
-        assertEquals(this.implementacao.floor(this.array, -4), null);
     }
 
 }
