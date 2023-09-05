@@ -28,7 +28,7 @@ import util.Util;
  * @param <T>
  */
 public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLargest<T>{
-
+	//
 	@Override
 	public T[] getKLargest(T[] array, int k) {
 		T[] resposta = (T[]) new Comparable[k];
@@ -61,10 +61,9 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 	 */
 	public T orderStatistics(T[] array, int k){
 		T res = null;
-		if(array != null && k > 0 && k <= array.length && array.length > 0){
-			int index = buscaEstatistica(array,0,array.length-1,k);
-			res = array[index];
-		}
+		int index = buscaEstatistica(array,0,array.length-1,k);
+		res = array[index];
+	
 		return res;
 	}
 	

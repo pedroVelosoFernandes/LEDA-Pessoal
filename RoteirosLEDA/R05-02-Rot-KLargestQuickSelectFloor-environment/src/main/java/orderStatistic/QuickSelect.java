@@ -50,7 +50,7 @@ public class QuickSelect<T extends Comparable<T>> {
 			res = array[index];
 		}
 		return res;
-
+		//
 	}
 
 	private int buscaEstatistica(T[] array, int leftIndex, int rightIndex,int k){
