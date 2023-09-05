@@ -8,7 +8,7 @@ public class FloorBinarySearchImpl implements Floor {
 	public Integer floor(Integer[] array, Integer x) {
 		if(array != null && array.length > 0 && x != null){
 			quickSort(array, 0, array.length-1);
-			int floor = floorRecursivo(array, x,0,array.length-1,-1);
+			int floor = floorRecursivo(array, x,0,array.length-1);
 			if( floor != -1){
 				return floor;
 			}
@@ -16,8 +16,8 @@ public class FloorBinarySearchImpl implements Floor {
 		return null;
 
 	}
-	private int floorRecursivo(Integer[] array,int x,int leftIndex,int rightIndex,Integer floor){
-		Integer floorNumber = floor;
+	private int floorRecursivo(Integer[] array,int x,int leftIndex,int rightIndex){
+		Integer floorNumber = null;
 		if(leftIndex <= rightIndex){
 			int mid = (leftIndex + rightIndex);
 			
@@ -26,12 +26,17 @@ public class FloorBinarySearchImpl implements Floor {
 			}
 
 			else if(x < array[mid]){
-				floorNumber =  floorRecursivo(array, x, leftIndex, mid - 1, floorNumber);
+				floorNumber =  floorRecursivo(array, x, leftIndex, mid - 1);
 			}
 			else if(x > array[mid]){
-				floorNumber =  floorRecursivo(array, x, mid + 1, rightIndex,array[mid]);
+				floorNumber =  floorRecursivo(array, x, mid + 1, rightIndex);
 			}
 
+		}
+		else{
+			if(leftIndex<x){
+				floorNumber = array[rightIndex];
+			}
 		}
 		return floorNumber;
 	}
