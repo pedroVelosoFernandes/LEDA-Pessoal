@@ -32,15 +32,23 @@ public class StudentQueueTest {
 
 	private void getImplementations() {
 		// TODO O aluno deve ajustar aqui para instanciar sua implementação
-		queue1 = null;
-		queue2 = null;
-		queue3 = null;
+		queue1 = new QueueImpl<Integer>(4);
+		queue2 = new QueueImpl<Integer>(2);
+		queue3 = new QueueImpl<Integer>(2);
+
+		queue1 = new QueueUsingStack<Integer>(4);
+		queue2 = new QueueUsingStack<Integer>(2);
+		queue3 = new QueueUsingStack<Integer>(2);
+
+		queue1 = new CircularQueue<Integer>(4);
+		queue2 = new CircularQueue<Integer>(2);
+		queue3 = new CircularQueue<Integer>(2);
 	}
 
 	// MÉTODOS DE TESTE
 	@Test
 	public void testHead() {
-		assertEquals(new Integer(1), queue1.head());
+		assertEquals((Integer) 1, queue1.head());
 	}
 
 	@Test
@@ -57,7 +65,7 @@ public class StudentQueueTest {
 	@Test
 	public void testEnqueue() {
 		try {
-			queue1.enqueue(new Integer(5));
+			queue1.enqueue((Integer) 5);
 		} catch (QueueOverflowException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,23 +74,26 @@ public class StudentQueueTest {
 
 	@Test(expected = QueueOverflowException.class)
 	public void testEnqueueComErro() throws QueueOverflowException {
-		queue1.enqueue(new Integer(5)); // vai depender do tamanho que a fila
+		queue1.enqueue((Integer) 1); 
+		queue1.enqueue((Integer) 2); // vai depender do tamanho que a fila
 										// foi iniciada!!!
 	}
 
 	@Test
 	public void testDequeue() {
 		try {
-			assertEquals(new Integer(1), queue1.dequeue());
+			assertEquals((Integer) 1, queue1.dequeue());
 		} catch (QueueUnderflowException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Test(expected = QueueUnderflowException.class)
 	public void testDequeueComErro() throws QueueUnderflowException {
-		assertEquals(new Integer(1), queue1.dequeue()); // vai depender do
+		assertEquals((Integer) 1, queue1.dequeue());
+		assertEquals((Integer) 2, queue1.dequeue());
+		assertEquals((Integer) 3, queue1.dequeue());
+		assertEquals((Integer) 4, queue1.dequeue()); // vai depender do
 														// tamanho que a fial
 														// foi iniciada!!!
 	}
