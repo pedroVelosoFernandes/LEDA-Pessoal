@@ -12,38 +12,69 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.getData() == null;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int size = 0;
+		if(!isEmpty()){
+			size = 1 + this.getNext().size();
+		}
+		return size;
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T src = null;
+		if(element != null && !this.isEmpty()){
+			if(this.getData().equals(element)){
+				src = this.getData();
+			}
+			else{
+				src = this.getNext().search(element);
+			}
+		}
+		return src;
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(element != null){
+			if(this.isEmpty()){
+				this.setData(element);
+				this.setNext(new RecursiveSingleLinkedListImpl<>());//
+			}
+			else{
+				this.getNext().insert(element);
+			}
+		}	
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(!this.isEmpty() && element != null){
+			if(this.getData().equals(element)){
+				this.setData(this.getNext().getData());
+				this.setNext(this.getNext().getNext());
+			}
+			else{
+				this.getNext().remove(element);
+			}
+		}
 	}
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = (T[]) new Comparable[this.size()];
+		this.toArray(array,-1);
+		return array;
+	}
+	private void toArray(T[] array,int contador){
+		if(!this.isEmpty()){
+			array[++contador] = this.getData();
+			this.getNext().toArray(array, contador); 
+		}
 	}
 
 	public T getData() {
