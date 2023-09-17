@@ -88,4 +88,72 @@ public class StudentStackTest {
 		assertEquals(new Integer(1), stack1.pop());
 		assertEquals(new Integer(1), stack1.pop());
 	}
+	//
+	@Test
+	public void test01(){
+		Stack<Integer> s1 = new StackImpl<>(0);
+		assertTrue(s1.isEmpty());
+		assertTrue(s1.isFull());
+	}
+
+	@Test
+	public void test02(){
+		try{
+			Stack<Integer> s1 = new StackImpl<>(2);
+			assertTrue(s1.isEmpty());
+			s1.push(null);
+			assertTrue(s1.isEmpty());
+
+		}
+		catch(StackOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test03(){
+		try{
+			Stack<Integer> s1 = new StackImpl<>(1);
+
+			assertTrue(s1.isEmpty());
+			assertFalse(s1.isFull());
+
+			s1.push(5);
+
+			assertFalse(s1.isEmpty());
+			assertTrue(s1.isFull());
+
+		}
+		catch(StackOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test04(){
+		try{
+			Stack<Integer> q1 = new StackImpl<>(5);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				q1.push(i);
+			}
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+			for(int i = 5; i >= 1; i--){
+				assertTrue(i == q1.pop());
+			}
+	
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+		}
+		catch(StackOverflowException | StackUnderflowException e){
+			e.printStackTrace();
+		}
+	}
 }

@@ -24,9 +24,14 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 
 	private void getImplementations() {
 		// TODO O aluno deve ajustar aqui para instanciar sua implementação
+		lista1 = new DoubleLinkedListImpl<>();
+		lista2 = new DoubleLinkedListImpl<>();
+		lista3 = new DoubleLinkedListImpl<>();
+
 		lista1 = new RecursiveDoubleLinkedListImpl<>();
 		lista2 = new RecursiveDoubleLinkedListImpl<>();
 		lista3 = new RecursiveDoubleLinkedListImpl<>();
+
 	}
 
 	// Métodos de DoubleLinkedList
@@ -62,6 +67,25 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 
 		((DoubleLinkedList<Integer>) lista1).removeFirst();
 		Assert.assertArrayEquals(new Integer[] { 2, 1 }, lista1.toArray());
+	}
+
+	@Test
+	public void testRemove1() {
+		lista2.insert(1);
+		lista2.insert(2);
+		Assert.assertEquals(2, lista2.size());
+		lista2.remove(2);
+		Assert.assertEquals(1, lista2.size());
+	}
+
+	@Test
+	public void testRemove() {
+
+		Assert.assertEquals(3, lista1.size());
+		lista1.remove(2);
+		lista1.remove(1);
+		Assert.assertEquals(1, lista1.size());
+
 	}
 
 	@Test

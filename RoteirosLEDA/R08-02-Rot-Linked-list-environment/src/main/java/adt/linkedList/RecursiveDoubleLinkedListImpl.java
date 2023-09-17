@@ -11,27 +11,46 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	@Override
 	public void insert(T element) {
-		if(element != null){
+		if (element != null) {
 
-			if(this.isEmpty()){
-				
+			if (this.isEmpty()) {
+
 				this.setData(element);
-				this.setNext(new RecursiveDoubleLinkedListImpl<>());
-				((RecursiveDoubleLinkedListImpl<T>) this.getNext()).setPrevious(this);
-					
-				this.setPrevious(new RecursiveDoubleLinkedListImpl<>());
-				this.getPrevious().setNext(this);
-			}
-			else if(this.getNext().isEmpty()){
+				this.setNext(new RecursiveDoubleLinkedListImpl<T>());
+				((RecursiveDoubleLinkedListImpl<T>)this.getNext()).setPrevious(this);
 
-				this.getNext().setData(element);
-				this.getNext().setNext(new RecursiveDoubleLinkedListImpl<>());
-				((RecursiveDoubleLinkedListImpl<T>) this.getNext()).setPrevious(this);
-			}
-			else{
+				if (this.size() == 0) {
+					this.setPrevious(new RecursiveDoubleLinkedListImpl<T>());
+					((RecursiveDoubleLinkedListImpl<T>)this.getPrevious()).setNext(this);
+				}
+
+			} 
+			else {
 				this.getNext().insert(element);
 			}
-		}	
+		}
+	}
+
+	@Override
+	public void remove(T element) {
+		if(!this.isEmpty() && element != null){
+
+			if(this.getData().equals(element)){
+				if(this.getNext().isEmpty()){
+					this.removeLast();
+				}
+				else{
+					this.setData(this.getNext().getData());
+					this.setNext(this.getNext().getNext());
+					if(!this.getNext().isEmpty()){
+						((RecursiveDoubleLinkedListImpl<T>)this.getNext().getNext()).setPrevious(this);
+					}
+				}
+			}
+			else{
+				this.getNext().remove(element);
+			}
+		}
 	}
 
 	@Override
@@ -81,7 +100,7 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 		if(!this.isEmpty()){
 			if(this.getNext().isEmpty()){
 				this.setData(this.getNext().getData());
-				this.setNext(this.getNext());
+				this.setNext(null);
 			}
 			else{
 				((RecursiveDoubleLinkedListImpl<T>)this.getNext()).removeLast();

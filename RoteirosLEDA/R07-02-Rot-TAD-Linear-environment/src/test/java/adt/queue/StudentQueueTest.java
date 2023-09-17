@@ -97,4 +97,208 @@ public class StudentQueueTest {
 														// tamanho que a fial
 														// foi iniciada!!!
 	}
+	//
+	@Test
+	public void test01(){
+		Queue<Integer> q1 = new QueueImpl<>(0);
+		assertTrue(q1.isEmpty());
+		assertTrue(q1.isFull());
+	}
+
+	@Test
+	public void test02(){
+		try{
+			Queue<Integer> q1 = new QueueImpl<>(2);
+			assertTrue(q1.isEmpty());
+			q1.enqueue(null);
+			assertTrue(q1.isEmpty());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test03(){
+		try{
+			Queue<Integer> q1 = new QueueImpl<>(1);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			q1.enqueue(5);
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test04(){
+		try{
+			Queue<Integer> q1 = new QueueImpl<>(5);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				q1.enqueue(i);
+			}
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				assertTrue(i == q1.dequeue());
+			}
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+		}
+		catch(QueueOverflowException | QueueUnderflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test01Circular(){
+		Queue<Integer> q1 = new CircularQueue<>(0);
+		assertTrue(q1.isEmpty());
+		assertTrue(q1.isFull());
+	}
+
+	@Test
+	public void test02Circular(){
+		try{
+			Queue<Integer> q1 = new CircularQueue<>(2);
+			assertTrue(q1.isEmpty());
+			q1.enqueue(null);
+			assertTrue(q1.isEmpty());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test03Circular(){
+		try{
+			Queue<Integer> q1 = new CircularQueue<>(1);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			q1.enqueue(5);
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test04Circular(){
+		try{
+			Queue<Integer> q1 = new CircularQueue<>(5);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				q1.enqueue(i);
+			}
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				assertTrue(i == q1.dequeue());
+			}
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+		}
+		catch(QueueOverflowException | QueueUnderflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test01UsingStack(){
+		Queue<Integer> q1 = new QueueUsingStack<>(0);
+		assertTrue(q1.isEmpty());
+		assertTrue(q1.isFull());
+	}
+
+	@Test
+	public void test02UsingStack(){
+		try{
+			Queue<Integer> q1 = new QueueUsingStack<>(2);
+			assertTrue(q1.isEmpty());
+			q1.enqueue(null);
+			assertTrue(q1.isEmpty());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test03UsingStack(){
+		try{
+			Queue<Integer> q1 = new QueueUsingStack<>(1);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			q1.enqueue(5);
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+		}
+		catch(QueueOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test04UsingStack(){
+		try{
+			Queue<Integer> q1 = new QueueUsingStack<>(5);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				q1.enqueue(i);
+			}
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				assertTrue(i == q1.dequeue());
+			}
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+		}
+		catch(QueueOverflowException | QueueUnderflowException e){
+			e.printStackTrace();
+		}
+	}
 }
