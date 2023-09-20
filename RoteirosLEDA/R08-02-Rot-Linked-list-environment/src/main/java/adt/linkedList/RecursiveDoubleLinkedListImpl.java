@@ -101,6 +101,9 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 			if(this.getNext().isEmpty()){
 				this.setData(this.getNext().getData());
 				this.setNext(null);
+				if(this.size() == 0){
+					this.setPrevious(null);
+				}
 			}
 			else{
 				((RecursiveDoubleLinkedListImpl<T>)this.getNext()).removeLast();
