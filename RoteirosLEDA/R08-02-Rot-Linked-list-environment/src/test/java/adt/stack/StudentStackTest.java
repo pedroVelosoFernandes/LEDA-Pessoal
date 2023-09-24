@@ -32,9 +32,9 @@ public class StudentStackTest {
 
 	private void getImplementations() {
 		// TODO O aluno deve ajustar aqui para instanciar sua implementação
-		stack1 = null;
-		stack2 = null;
-		stack3 = null;
+		stack1 = new StackDoubleLinkedListImpl<>(4);
+		stack2 = new StackDoubleLinkedListImpl<>(2);
+		stack3 = new StackDoubleLinkedListImpl<>(0);
 	}
 
 	// MÉTODOS DE TESTE
@@ -66,7 +66,7 @@ public class StudentStackTest {
 
 	@Test(expected = StackOverflowException.class)
 	public void testPushComErro() throws StackOverflowException {
-		stack1.push(new Integer(5)); // levanta excecao apenas se o tamanhonao
+		stack2.push(new Integer(5)); // levanta excecao apenas se o tamanhonao
 										// permitir outra insercao
 	}
 
@@ -82,7 +82,74 @@ public class StudentStackTest {
 
 	@Test(expected = StackUnderflowException.class)
 	public void testPopComErro() throws StackUnderflowException {
-		assertEquals(new Integer(3), stack1.pop()); // levanta excecao apenas se
+		assertEquals(new Integer(3), stack3.pop()); // levanta excecao apenas se
 													// stack1 for vazia
+	}
+	@Test
+	public void test01(){
+		Stack<Integer> s1 = new StackDoubleLinkedListImpl<>(0);
+		assertTrue(s1.isEmpty());
+		assertTrue(s1.isFull());
+	}
+
+	@Test
+	public void test02(){
+		try{
+			Stack<Integer> s1 = new StackDoubleLinkedListImpl<>(2);
+			assertTrue(s1.isEmpty());
+			s1.push(null);
+			assertTrue(s1.isEmpty());
+
+		}
+		catch(StackOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test03(){
+		try{
+			Stack<Integer> s1 = new StackDoubleLinkedListImpl<>(1);
+
+			assertTrue(s1.isEmpty());
+			assertFalse(s1.isFull());
+
+			s1.push(5);
+
+			assertFalse(s1.isEmpty());
+			assertTrue(s1.isFull());
+
+		}
+		catch(StackOverflowException e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test04(){
+		try{
+			Stack<Integer> q1 = new StackDoubleLinkedListImpl<>(5);
+
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+			for(int i = 1; i <= 5; i++){
+				q1.push(i);
+			}
+
+			assertFalse(q1.isEmpty());
+			assertTrue(q1.isFull());
+
+			for(int i = 5; i >= 1; i--){
+				assertTrue(i == q1.pop());
+			}
+	
+			assertTrue(q1.isEmpty());
+			assertFalse(q1.isFull());
+
+		}
+		catch(StackOverflowException | StackUnderflowException e){
+			e.printStackTrace();
+		}
 	}
 }

@@ -28,6 +28,7 @@ public class StudentLinkedListTest {
 
 		lista1 = new RecursiveSingleLinkedListImpl<>();
 		lista2 = new RecursiveSingleLinkedListImpl<>();
+
 	}
 
 	@Test
@@ -87,6 +88,92 @@ public class StudentLinkedListTest {
 		lista2.remove(2);
 		Assert.assertEquals(1, lista2.size());
 		
+
+	}
+	@Test
+	public void test01(){
+		LinkedList<Integer> lTest = new SingleLinkedListImpl<>();
+		lTest.insert(null);
+
+		Assert.assertTrue(lTest.size() == 0);
+		lTest.insert(4);
+		Assert.assertTrue(lTest.size() == 1);
+
+		Assert.assertTrue(lTest.search(2) == null);
+		Assert.assertTrue(lTest.search(4).equals(4));
+
+		lTest.remove(7);
+		Assert.assertTrue(lTest.size() == 1);
+
+		lTest.remove(4);
+		Assert.assertTrue(lTest.size() == 0);
+		lTest.remove(55);
+		Assert.assertTrue(lTest.size() == 0);
+
+	}
+
+	@Test
+	public void test02(){
+		LinkedList<Integer> lTest = new SingleLinkedListImpl<>();
+		lTest.insert(null);
+
+
+		lTest.insert(4);
+		lTest.insert(5);
+		lTest.insert(6);
+		Assert.assertTrue(lTest.size() == 3);
+
+		lTest.remove(6);
+
+		Integer[] array = new Integer[]{4, 5};
+		Assert.assertArrayEquals(array, lTest.toArray());
+	}
+
+	@Test
+	public void test01Recursivo(){
+		LinkedList<Integer> lTest = new RecursiveSingleLinkedListImpl<>();
+		lTest.insert(null);
+
+
+		lTest.insert(4);
+		lTest.insert(5);
+		lTest.insert(6);
+		lTest.remove(88);
+		Assert.assertTrue(lTest.size() == 3);
+
+		lTest.remove(6);
+
+		Integer[] array = new Integer[]{4, 5};
+		Assert.assertArrayEquals(array, lTest.toArray());
+
+		lTest.remove(5);
+		array = new Integer[]{4};
+		Assert.assertArrayEquals(array, lTest.toArray());
+
+		lTest.remove(4);
+		array = new Integer[]{};
+		Assert.assertArrayEquals(array, lTest.toArray());
+	}
+
+	@Test
+	public void test02Recursivo(){
+		LinkedList<Integer> lTest = new RecursiveSingleLinkedListImpl<>();
+		lTest.insert(null);
+
+		Assert.assertTrue(lTest.size() == 0);
+		lTest.insert(4);
+		Assert.assertTrue(lTest.size() == 1);
+
+		Assert.assertTrue(lTest.search(2) == null);
+		Assert.assertTrue(lTest.search(4).equals(4));
+
+		lTest.remove(7);
+		Assert.assertTrue(lTest.size() == 1);
+
+		lTest.remove(4);
+		Assert.assertTrue(lTest.size() == 0);
+		lTest.remove(55);
+		Assert.assertTrue(lTest.size()==0);
 
 	}
 }

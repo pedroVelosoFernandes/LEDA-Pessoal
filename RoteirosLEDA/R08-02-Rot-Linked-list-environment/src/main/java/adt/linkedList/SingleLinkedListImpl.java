@@ -65,10 +65,10 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 			}
 			else{
 				SingleLinkedListNode<T> aux = this.getHead();
-				while(!aux.isNIL() && !aux.getNext().getData().equals(element)){
+				while(!aux.getNext().isNIL() && !aux.getNext().getData().equals(element)){
 					aux = aux.getNext();
 				}
-				if(!aux.isNIL()){
+				if(!aux.getNext().isNIL()){
 					aux.setNext(aux.getNext().getNext());
 				}
 			}
@@ -79,7 +79,7 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 	public T[] toArray() {
 		SingleLinkedListNode<T> aux = this.getHead();
 		int contador = -1;
-		T[] array = (T[]) new Comparable[this.size()];
+		T[] array = (T[]) new Object[this.size()];
 		while(!aux.isNIL()){
 			array[++contador] = aux.getData();
 			aux = aux.getNext();

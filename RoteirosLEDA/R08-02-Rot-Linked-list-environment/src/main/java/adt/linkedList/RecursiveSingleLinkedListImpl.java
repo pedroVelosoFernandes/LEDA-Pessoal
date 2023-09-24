@@ -66,7 +66,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public T[] toArray() {
-		T[] array = (T[]) new Comparable[this.size()];
+		T[] array = (T[]) new Object[this.size()];
 		this.toArray(array,-1);
 		return array;
 	}

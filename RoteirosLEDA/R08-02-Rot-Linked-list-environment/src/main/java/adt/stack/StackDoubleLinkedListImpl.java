@@ -2,9 +2,6 @@ package adt.stack;
 
 import adt.linkedList.DoubleLinkedList;
 import adt.linkedList.DoubleLinkedListImpl;
-import adt.linkedList.SingleLinkedListImpl;
-import adt.queue.QueueOverflowException;
-import adt.queue.QueueUnderflowException;
 
 public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
