@@ -1,0 +1,213 @@
+@Test
+	public void testMaximumMinimum(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Assert.assertTrue(0 == tree1.maximum().getData());
+		Assert.assertTrue(10 == tree2.maximum().getData());
+		Assert.assertTrue(15 == tree3.maximum().getData());
+
+		Assert.assertTrue(0 == tree1.minimum().getData());
+		Assert.assertTrue(1 == tree2.minimum().getData());
+		Assert.assertTrue(1 == tree3.minimum().getData());
+
+		tree1.remove(0);
+		
+		Assert.assertTrue(null == tree1.minimum());
+		Assert.assertTrue(null == tree1.maximum());
+
+		for(int i = 15; i > 1; i--){
+			tree3.remove(i);
+			Assert.assertTrue(i - 1 == tree3.maximum().getData());;
+		}
+
+		for(int i = 1; i < 10 ; i++){
+			tree2.remove(i);
+			Assert.assertTrue(i + 1 == tree2.minimum().getData());;
+		}
+	}
+
+	@Test
+	public void testSucessor(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Integer[] tree2Resp = new Integer[]{2, 3, 4, 5, 6, 7, 8, 9, 10, null};
+		Integer[] tree3Resp = new Integer[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null};
+
+		for(int i = 1; i <= 9; i++){
+			Assert.assertEquals(tree2Resp[i -1], tree2.sucessor(i).getData());
+		}
+
+		Assert.assertEquals(null, tree2.sucessor(10));
+		Assert.assertEquals(null, tree1.sucessor(0));
+
+		for(int i = 1; i <= 14; i++){
+			Assert.assertEquals(tree3Resp[i -1], tree3.sucessor(i).getData());
+		}
+
+		Assert.assertEquals(null, tree3.sucessor(15));
+		Assert.assertEquals(null, tree3.sucessor(19999));
+		Assert.assertEquals(null, tree3.sucessor(-15));
+	}
+
+	@Test
+	public void testPredecessor(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+
+		for(int i = 10; i >= 2; i--){
+			Assert.assertTrue(i-1 == tree2.predecessor(i).getData());
+		}
+
+		Assert.assertEquals(null, tree2.predecessor(1));
+		Assert.assertEquals(null, tree1.predecessor(0));
+
+		for(int i = 15; i >= 2; i--){
+			Assert.assertTrue(i-1 == tree3.predecessor(i).getData());
+		}
+
+		Assert.assertEquals(null, tree3.predecessor(1));
+		Assert.assertEquals(null, tree3.predecessor(19999));
+		Assert.assertEquals(null, tree3.predecessor(-15));
+	}
+
+	@Test
+	public void testPreOrder(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Integer[] tree1R = new Integer[]{0};
+		Integer[] tree2R = new Integer[]{1, 2, 3, 4, 5, 6 ,7 ,8 ,9 ,10};
+		Integer[] tree3R = new Integer[]{8, 4, 2, 1, 3, 6 ,5 ,7 ,12 ,10, 9, 11, 14, 13 ,15};
+
+		Assert.assertArrayEquals(tree1R, tree1.preOrder());
+		Assert.assertArrayEquals(tree2R, tree2.preOrder());
+		Assert.assertArrayEquals(tree3R, tree3.preOrder());
+
+		tree1.remove(0);
+		Assert.assertArrayEquals(new Integer[]{}, tree1.preOrder());
+	}
+
+	@Test
+	public void testOrder(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Integer[] tree1R = new Integer[]{0};
+		Integer[] tree2R = new Integer[]{1, 2, 3, 4, 5, 6 ,7 ,8 ,9 ,10};
+		Integer[] tree3R = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+
+		Assert.assertArrayEquals(tree1R, tree1.order());
+		Assert.assertArrayEquals(tree2R, tree2.order());
+		Assert.assertArrayEquals(tree3R, tree3.order());
+
+		tree1.remove(0);
+		Assert.assertArrayEquals(new Integer[]{}, tree1.order());
+	}
+
+	@Test
+	public void postOrder(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Integer[] tree1R = new Integer[]{0};
+		Integer[] tree2R = new Integer[]{10, 9, 8, 7, 6, 5 ,4 ,3 ,2 ,1};
+		Integer[] tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 9, 11, 10, 13, 15, 14, 12, 8};
+
+		Assert.assertArrayEquals(tree1R, tree1.postOrder());
+		Assert.assertArrayEquals(tree2R, tree2.postOrder());
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+
+		tree1.remove(0);
+		Assert.assertArrayEquals(new Integer[]{}, tree1.postOrder());
+	}
+
+	@Test
+	public void testSearch1(){
+		BST<Integer> tree1 = this.tree1();
+		BST<Integer> tree2 = this.tree2();
+		BST<Integer> tree3 = this.tree3();
+
+		Assert.assertTrue(tree1.search(0).getData() == 0);
+
+		for(int i = 1; i <= 10; i++){
+			Assert.assertTrue(tree2.search(i).getData() == i);
+		}
+
+		for(int i = 1; i <= 15; i++){
+			Assert.assertTrue(tree3.search(i).getData() == i);
+			if(i > 1){
+				Assert.assertTrue(tree1.search(i).equals(new BSTNode<Integer>()));
+			}
+			if(i > 10){
+				Assert.assertTrue(tree2.search(i).equals(new BSTNode<Integer>()));
+			}
+		}
+		assertTrue(tree2.search(null).equals(new BSTNode<Integer>()));
+	}
+
+	@Test
+	public void testRemove1(){
+		BST<Integer> tree3 = this.tree3();
+		Integer[] tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 10, 13, 15, 14, 12, 9};
+
+		//Removendo uma root:
+		tree3.remove(8);
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(9);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 13, 15, 14, 12, 10};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(12);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 15, 14, 13, 10};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+
+		//Removendo no so com um filho
+		tree3.remove(14);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 15, 13, 10};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(13);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 15, 10};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(15);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11, 10};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(10);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4, 11};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(11);
+		tree3R = new Integer[]{1, 3, 2, 5, 7, 6, 4};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+
+		//Removendo folhas
+		tree3.remove(1);
+		tree3R = new Integer[]{3, 2, 5, 7, 6, 4};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(7);
+		tree3R = new Integer[]{3, 2, 5, 6, 4};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(3);
+		tree3R = new Integer[]{2, 5, 6, 4};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(5);
+		tree3R = new Integer[]{2, 6, 4};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(4);
+		tree3R = new Integer[]{2, 6};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(6);
+		tree3R = new Integer[]{2};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		tree3.remove(2);
+		tree3R = new Integer[]{};
+		Assert.assertArrayEquals(tree3R, tree3.postOrder());
+		Assert.assertTrue(tree3.isEmpty());
+
+	}
