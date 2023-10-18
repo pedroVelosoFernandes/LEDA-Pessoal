@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import adt.bst.BSTImpl;
+import adt.bst.extended.FloorCeilBST;
+import adt.bst.extended.FloorCeilBSTImpl;
 import adt.bt.BTNode;
 
 public class StudentBSTTest {
@@ -507,4 +509,31 @@ public class StudentBSTTest {
             Assert.assertEquals(i, k);
         }
     }
+		@Test
+	public void testFloor(){
+		FloorCeilBST impl = new FloorCeilBSTImpl();
+		
+		Assert.assertTrue(0 == impl.floor(new Integer[]{-999999, 0, 99999}, 0));
+		Assert.assertTrue(-15 == impl.floor(new Integer[]{-15, 0, 99999}, -1));
+		Assert.assertTrue(0 == impl.floor(new Integer[]{-15, 0, 99999}, 1));
+		Assert.assertTrue(null == impl.floor(new Integer[]{-15, 0, 99999}, -99999999));
+		Assert.assertTrue(0 == impl.floor(new Integer[]{15}, 1));
+		Assert.assertTrue(null == impl.floor(null, 1));
+		Assert.assertTrue(15 == impl.floor(new Integer[]{1, 2, 3, 4, 5, 6 ,7 ,8 ,9 ,10}, 50));
+	}
+
+	@Test
+	public void testCeil(){
+		FloorCeilBST impl = new FloorCeilBSTImpl();
+		Assert.assertTrue(0 == impl.ceil(new Integer[]{-999999, 0, 99999}, 0));
+		Assert.assertTrue(0 == impl.ceil(new Integer[]{-999999, 0, 99999}, -1));
+		Assert.assertTrue(-999999 == impl.ceil(new Integer[]{-999999, 0, 99999}, -99999999));
+		Assert.assertTrue(99999 == impl.ceil(new Integer[]{-999999, 0, 99999}, 8));
+		Assert.assertTrue(-999999 == impl.ceil(new Integer[]{-15, 0, 99999}, -99999999));
+		Assert.assertTrue(null == impl.ceil(new Integer[]{}, 1));
+		Assert.assertTrue(null == impl.ceil(null, 1));
+		Assert.assertTrue(99999 == impl.ceil(new Integer[]{1, 2, 3, 4, 5, 6 ,7 ,8 ,9,10},50));
+
+	}
+	
 }

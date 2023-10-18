@@ -27,3 +27,13 @@
   <level>FINE</level>
   <message>File 122110181-PEDRO HENRIQUE VELOSO FERNANDES.zip was received. It was sent by PEDRO HENRIQUE VELOSO FERNANDES from IP 192.168.25.144 at 12-10-2023 15*05*51</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-12T19:32:06.156-0300</date>
+  <logger>PEDRO HENRIQUE VELOSO FERNANDES</logger>
+  <level>FINE</level>
+  <message>File 122110181-PEDRO HENRIQUE VELOSO FERNANDES.zip was received. It was sent by PEDRO HENRIQUE VELOSO FERNANDES from IP 192.168.25.144 at 12-10-2023 19*32*06</message>
+</record>

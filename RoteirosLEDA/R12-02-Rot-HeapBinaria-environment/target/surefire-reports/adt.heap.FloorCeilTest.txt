@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: adt.bst.StudentBSTTest
+Test set: adt.heap.FloorCeilTest
 -------------------------------------------------------------------------------
-Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in adt.bst.StudentBSTTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s -- in adt.heap.FloorCeilTest
