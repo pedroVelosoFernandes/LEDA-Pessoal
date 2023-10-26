@@ -1,4 +1,4 @@
-package adt.heap;
+package adt.heap.orderStatistic;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import org.junit.Test;
 
+import adt.heap.ComparatorMaxHeap;
 import orderStatistic.OrderStatisticsHeapImpl;
 
 public class OrderStatisticTest {
@@ -59,5 +60,4 @@ public class OrderStatisticTest {
 	public void test09() {
 		assertNull(heap.getOrderStatistics(new Integer[] {}, 0));
 	}
-
 }

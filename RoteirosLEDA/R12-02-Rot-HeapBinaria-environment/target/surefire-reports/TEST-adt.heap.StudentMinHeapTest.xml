@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="adt.heap.StudentMinHeapTest" time="0.001" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="adt.heap.StudentMinHeapTest" time="0.0" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Pedro Veloso\AppData\Local\Temp\surefire18094206110766380107\surefirebooter-20231018163707528_3.jar C:\Users\Pedro Veloso\AppData\Local\Temp\surefire18094206110766380107 2023-10-18T16-37-07_390-jvmRun1 surefire-20231018163707528_1tmp surefire_0-20231018163707528_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Pedro Veloso\AppData\Local\Temp\surefire13819919836311498296\surefirebooter-20231019134156437_3.jar C:\Users\Pedro Veloso\AppData\Local\Temp\surefire13819919836311498296 2023-10-19T13-41-56_310-jvmRun1 surefire-20231019134156437_1tmp surefire_0-20231019134156437_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\CC UFCG\LEDA-Pessoal\RoteirosLEDA\R12-02-Rot-HeapBinaria-environment\target\test-classes;C:\CC UFCG\LEDA-Pessoal\RoteirosLEDA\R12-02-Rot-HeapBinaria-environment\target\classes;C:\Users\Pedro Veloso\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\Pedro Veloso\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Pedro Veloso\AppData\Local\Temp\surefire18094206110766380107\surefirebooter-20231018163707528_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Pedro Veloso\AppData\Local\Temp\surefire13819919836311498296\surefirebooter-20231019134156437_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21+35-LTS-2513"/>
@@ -59,7 +59,11 @@
     <property name="java.class.version" value="65.0"/>
   </properties>
   <testcase name="testBuild" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
-  <testcase name="testSort" classname="adt.heap.StudentMinHeapTest" time="0.001"/>
+  <testcase name="testSort" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
+  <testcase name="testHeapSort" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
+  <testcase name="testRemove1" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
+  <testcase name="testBuild1" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
   <testcase name="testInsert" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
+  <testcase name="testInsert1" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
   <testcase name="testRemove" classname="adt.heap.StudentMinHeapTest" time="0.0"/>
 </testsuite>
