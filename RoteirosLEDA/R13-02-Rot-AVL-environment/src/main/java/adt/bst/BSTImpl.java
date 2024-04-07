@@ -1,7 +1,5 @@
 package adt.bst;
 
-import adt.bt.BTNode;
-
 public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	protected BSTNode<T> root;
@@ -90,19 +88,20 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public BSTNode<T> maximum() {
-		BSTNode<T> result = null;
-		if(!this.isEmpty()){
-			result = maximum(this.getRoot());
-		}
-		return result;
+		return maximum(this.getRoot());
 	}
 	
 	private BSTNode<T> maximum(BSTNode<T> node){
-		BSTNode<T> result = node;
-		if(!node.getRight().isEmpty()){
-			result = maximum((BSTNode<T>) node.getRight());
+		BSTNode<T> aux = node;
+		if(aux.isEmpty()){
+			aux = null;
 		}
-		return result;
+		else{
+			while(!aux.getRight().isEmpty()){
+				aux = (BSTNode<T>) aux.getRight();
+			}
+		}
+		return aux;
 	}
 
 	@Override
@@ -240,7 +239,7 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 	}
 	private int preOrder(BSTNode<T> node,T[] array,int indice){
 		if(node != null && !node.isEmpty()){
-			array[indice++] = node.getData();
+			indice = visit(array,node.getData(),indice);
 			indice = preOrder((BSTNode<T>) node.getLeft(), array, indice);
 			indice = preOrder((BSTNode<T>) node.getRight(), array, indice);
 		}
